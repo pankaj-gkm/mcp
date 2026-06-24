@@ -19,8 +19,8 @@ export default function BugDemoSection() {
     e.preventDefault()
     if (!description || !amount) return
 
-    // BUG: parseInt truncates decimal amounts (12.50 → 12, 24.99 → 24)
-    const parsedAmount = parseInt(amount)
+    // parseFloat preserves cents (12.50, 24.99); parseInt would truncate them
+    const parsedAmount = parseFloat(amount)
 
     setExpenses(prev => [
       ...prev,
